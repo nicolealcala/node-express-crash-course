@@ -1,0 +1,25 @@
+{
+  "name": "node-odin-project",
+  "version": "1.0.0",
+  "description": "<br/>",
+  "homepage": "https://github.com/nicolealcala/node-odin-project#readme",
+  "bugs": {
+    "url": "https://github.com/nicolealcala/node-odin-project/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/nicolealcala/node-odin-project.git"
+  },
+  "license": "ISC",
+  "author": "",
+  "type": "commonjs",
+  "main": "/express/server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "dependencies": {
+    "ejs": "^3.1.10",
+    "express": "^5.1.0",
+    "lodash": "^4.17.21"
+  }
+}
