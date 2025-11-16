@@ -95,7 +95,7 @@ http://localhost:3000
 ## ✨ Future Improvements
 
 - Add more routes and content.
-- Introduce Express.js after mastering the basics.
+- Add styling to static and dynamic pages.
 
 <br/>
 
