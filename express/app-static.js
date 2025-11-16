@@ -10,11 +10,11 @@ const app = express();
 
 //Routing
 app.get('/', (req, res) => {
-    res.sendFile('./views/index.html', { root: projectRoot })
+    res.sendFile('./views/static/index.html', { root: projectRoot })
 })
 
 app.get('/about', (req, res) => {
-    res.sendFile('./views/about.html', { root: projectRoot })
+    res.sendFile('./views/static/about.html', { root: projectRoot })
 })
 
 app.get('/about-us', (req, res) => {
@@ -22,11 +22,11 @@ app.get('/about-us', (req, res) => {
 })
 
 app.get('/contact', (req, res) => {
-    res.sendFile('./views/contact.html', { root: projectRoot })
+    res.sendFile('./views/static/contact.html', { root: projectRoot })
 })
 
 app.use((req, res) => { // --> Catch-all request handler, should always be the last for 404 response
-    res.status(404).sendFile('./views/404.html', { root: projectRoot })
+    res.status(404).sendFile('./views/static/404.html', { root: projectRoot })
 })
 
 

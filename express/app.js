@@ -4,12 +4,13 @@ const path = require('path');
 const PORT = 3000;
 
 const projectRoot = path.resolve(__dirname, "../")
+
 // Express app
 const app = express();
 
 //Register EJS View Engine in our app
 app.set('view engine', 'ejs')
-app.set('views', path.join(projectRoot, 'views'))
+app.set('views', path.join(projectRoot, 'views/dynamic'))
 
 //Routing
 app.get('/', (req, res) => {
