@@ -1,6 +1,8 @@
 const express = require('express');
 const path = require('path');
 
+const blogs = require('../lib/data/blogs')
+
 const PORT = 3000;
 
 const projectRoot = path.resolve(__dirname, "../")
@@ -14,11 +16,11 @@ app.set('views', path.join(projectRoot, 'views/dynamic'))
 
 //Routing
 app.get('/', (req, res) => {
-    res.render('index')
+    res.render('index', { title: "Home", blogs })
 })
 
 app.get('/about', (req, res) => {
-    res.render('about')
+    res.render('about', { title: "About Us" })
 })
 
 app.get('/about-us', (req, res) => {
@@ -26,11 +28,11 @@ app.get('/about-us', (req, res) => {
 })
 
 app.get('/blogs/create', (req, res) => {
-    res.render('create');
+    res.render('create', { title: "Create Blog" });
 })
 
 app.use((req, res) => { // --> Catch-all request handler, should always be the last for 404 response
-    res.status(404).render('404')
+    res.status(404).render('404', { title: "Not Found" })
 })
 
 app.listen(PORT, () => { console.log("Listening to port ", PORT) });
