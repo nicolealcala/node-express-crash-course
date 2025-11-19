@@ -57,8 +57,8 @@ project-folder/
 - [Node.js](https://nodejs.org/en)
 - [Express.js](https://expressjs.com)
 - [EJS](https://ejs.co/)
-- HTML5
 - [JavaScript](https://developer.mozilla.org/en-US/docs/Web/JavaScript)
+- - HTML5
 
 <br/>
 
@@ -111,6 +111,8 @@ http://localhost:3000
 <br/>
 
 ---
+
+<br/>
 
 ## ✨ Future Improvements
 
