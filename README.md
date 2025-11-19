@@ -63,7 +63,7 @@ project-folder/
 - [Express.js](https://expressjs.com)
 - [EJS](https://ejs.co/)
 - [JavaScript](https://developer.mozilla.org/en-US/docs/Web/JavaScript)
-- - HTML5
+- HTML5
 
 <br/>
 
