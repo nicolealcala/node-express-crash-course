@@ -31,19 +31,24 @@ project-folder/
 ├── express/
 │ ├── app-static.js # Express app responding with static HTML pages
 │ ├── app.js # Express app responding with dynamic HTML pages using EJS view engine
+├── models/
+│ ├── blog.js
+├── public/
+│ ├── script.js
+│ └── styles.css
 ├── utils/
 │ ├── files.js # Utility functions for working with files using the `fs` module
 ├── views/
 │ ├── dynamic/
-│ │ ├── 404.ejs # Dynamic Fallback page
-│ │ ├── about.ejs # Dynamic About page
-│ │ ├── create.ejs # Dynamic Create Blog page
-│ └──   index.ejs # Dynamic Home page
+│ │ ├── 404.ejs
+│ │ ├── about.ejs
+│ │ ├── create.ejs
+│ └──   index.ejs
 │ ├── static/
-│ │ ├── 404.html # Static Fallback page
-│ │ ├── about.html # Static About page
-│ │ ├── contact.html # Static Contact page
-│ └──   index.html # Static Home page
+│ │ ├── 404.html
+│ │ ├── about.html
+│ │ ├── contact.html
+│ └──   index.html
 ├── package-lock.json
 ├── package.json
 ├── README.md
