@@ -43,12 +43,12 @@ project-folder/
 │ │ ├── 404.ejs
 │ │ ├── about.ejs
 │ │ ├── create.ejs
-│ └──   index.ejs
+│ └──── index.ejs
 │ ├── static/
 │ │ ├── 404.html
 │ │ ├── about.html
 │ │ ├── contact.html
-│ └──   index.html
+│ └──── index.html
 ├── package-lock.json
 ├── package.json
 ├── README.md
