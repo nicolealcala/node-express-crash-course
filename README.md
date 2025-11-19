@@ -2,7 +2,7 @@
 
 <br/>
 
-This project is created as part of **The Odin Project** Node.js curriculum. It serves as my _first Node.js project_, where I build a simple web server in two versions: (1) using only **core Node.js modules** and (2) using **Express.js** framework. The Server responds with basic HTML pages and demonstrates how a minimal backend works under the hood.
+This project is created as part of **The Odin Project** Node.js curriculum. It serves as my _learning project_, where I build a simple web server in two versions: (1) using only **core Node.js modules** and (2) using **Express.js** framework. The Server responds with basic HTML pages and demonstrates how a minimal backend works under the hood.
 
 <br/>
 
@@ -34,14 +34,16 @@ project-folder/
 ├── utils/
 │ ├── files.js # Utility functions for working with files using the `fs` module
 ├── views/
-│ ├── 404.ejs # Dynamic Fallback page
-│ ├── 404.html # Static Fallback page
-│ ├── about.ejs # Dynamic About page
-│ ├── about.html # Static About page
-│ ├── contact.html # Static Contact page
-│ ├── create.ejs # Dynamic Create Blog page
-│ ├── index.ejs # Dynamic Home page
-│ └── index.html # Static Home page
+│ ├── dynamic/
+│ │ ├── 404.ejs # Dynamic Fallback page
+│ │ ├── about.ejs # Dynamic About page
+│ │ ├── create.ejs # Dynamic Create Blog page
+│ └──   index.ejs # Dynamic Home page
+│ ├── static/
+│ │ ├── 404.html # Static Fallback page
+│ │ ├── about.html # Static About page
+│ │ ├── contact.html # Static Contact page
+│ └──   index.html # Static Home page
 ├── package-lock.json
 ├── package.json
 ├── README.md
@@ -54,9 +56,9 @@ project-folder/
 
 - [Node.js](https://nodejs.org/en)
 - [Express.js](https://expressjs.com)
-- EJS
+- [EJS](https://ejs.co/)
 - HTML5
-- JavaScript
+- [JavaScript](https://developer.mozilla.org/en-US/docs/Web/JavaScript)
 
 <br/>
 
@@ -76,11 +78,29 @@ node -v
 cd project-folder
 ```
 
-**4.** Run the server:
+**4.** Run the server
 
-```
-node server.js
-```
+1.  To run the pure Node.js web server, enter the following command:
+
+    ```
+    node server.js
+    ```
+
+2.  To run the Express app, run the following:
+
+    ```
+    cd express
+    node app-static
+    ```
+
+    **or**
+
+    ```
+    cd express
+    node app
+    ```
+
+    _Note:_ `app` serves dinamic HTML pages, while `app-static` serves constant, static HTML pages.
 
 **5.** Open your broswer and visit
 
