@@ -7,8 +7,15 @@ const projectRoot = path.resolve(__dirname, '../')
 // Express app
 const app = express();
 
-
-//Routing
+/**
+ * ROUTING NOTES:
+ * 
+ * - We use sendFile() method when responding back with STATIC HTML pages.
+ * - use() method is executed for every incoming requests when no path is specified to it.
+ * - We must explicitly set the response status for intentional NOT FOUND pages. Becaue Node
+ *   and Express do not automatically change the status code based on the content we send.
+ * 
+ */
 app.get('/', (req, res) => {
     res.sendFile('./views/static/index.html', { root: projectRoot })
 })
