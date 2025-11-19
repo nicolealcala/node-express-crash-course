@@ -1,12 +1,29 @@
-const express = require('express');
 const path = require('path');
+const express = require('express');
 const morgan = require('morgan');
-const blogs = require('../lib/data/blogs')
+require('dotenv').config({ path: path.join(__dirname, "..", ".env") });
+const mongoose = require('mongoose');
+
+const Blog = require('../models/blog')
 
 const PORT = 3000;
 
 // Express app
 const app = express();
+
+/**
+ * DATABASE NOTES:
+ * 
+ * mongoose.connect()
+ * ├── Returns a PROMISE, thus we can chain callbacks using `.then()` and `.catch()` methods.
+ * └── We can pass the `app.listen()` in the .then() method as a callback to only listen 
+ *     for requests when the DB connection is established.  
+ * 
+ */
+
+mongoose.connect(process.env.DB_URI)
+    .then(() => app.listen(PORT, () => { console.log("Listening to port", PORT) }))
+    .catch(() => console.error("Failed to connect to DB"));
 
 /**
  * CONFIGURATION NOTES:
@@ -18,7 +35,7 @@ const app = express();
  *  ├── We can also use this to store any custom data or variables that we want to make 
  *  │   globally accessible within our application, without being limited to the predefined
  *  │   Express settings.
- *  └── To retrieve a value from the app's settings, we use the app.get() method.
+ *  └── To retrieve a value from the app's settings, we use the app.get()
  * 
  */
 app.set('view engine', 'ejs')
@@ -49,6 +66,9 @@ app.set('views', path.join(__dirname, '..', 'views/dynamic'))
 //Static files
 app.use(express.static(path.join(__dirname, '..', 'public')));
 
+// converts form data into workable format (JavaScript Object)
+app.use(express.urlencoded({ extended: true }))
+
 // Custom logger middleware
 app.use((req, res, next) => {
     console.log('--------NEW REQUEST--------');
@@ -65,7 +85,8 @@ app.use(morgan('dev'));
 
 // Route handlers
 app.get('/', (req, res) => {
-    res.render('index', { title: "Home", blogs })
+    // res.render('index', { title: "Home", blogs })
+    res.redirect('/blogs')
 })
 
 app.get('/about', (req, res) => {
@@ -76,13 +97,49 @@ app.get('/about-us', (req, res) => {
     res.redirect('/about') // --> Temporary redirect. Pass in (301, '/path') for permanent redirect
 })
 
+app.get('/blogs', (req, res) => {
+    Blog.find().sort({ createdAt: -1 })
+        .then(result => res.render('index', { title: "All Blogs", blogs: result }))
+        .catch(err => console.error(err))
+})
+
+app.post('/blogs', (req, res) => {
+    const newBlog = new Blog(req.body)
+
+    newBlog.save()
+        .then(() => res.redirect('/blogs'))
+        .catch(err => console.error(err));
+})
+
+
 app.get('/blogs/create', (req, res) => {
     res.render('create', { title: "Create Blog" });
 })
 
-// --> Catch-all request handler, should always be the last for 404 response
+/**
+ * ROUTE PARAMETERS
+ *  ├── The varable parts of the route that may change value.
+ *  ├── localhost:3000/:id
+ *  └── localhost:3000/123 || localhost:3000/hello
+ * 
+ */
+
+app.get("/blogs/:id", (req, res) => {
+    const id = req.params.id // --> the dynamic id value
+    Blog.findById(id)
+        .then(result => res.render('blog', { title: result.title, blog: result }))
+        .catch(err => res.status(500).send());
+})
+
+app.delete('/blogs/:id', (req, res) => {
+    const id = req.params.id // --> dynamic id value
+
+    Blog.findByIdAndDelete(id)
+        .then((result) => res.json({ redirect: '/blogs' }))
+        .catch(err => res.status(500).send());
+})
+
+// Catch-all request handler, should always be the last for 404 response
 app.use((req, res) => {
     res.status(404).render('404', { title: "Not Found" })
 })
-
-app.listen(PORT, () => { console.log("Listening to port ", PORT) });
