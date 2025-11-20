@@ -11,15 +11,17 @@ This project is created as part of **The Odin Project** Node.js curriculum. It s
 #### A. Understanding the fundamental concepts behind how servers work in Node.js. It includes:
 
 - Creating a basic HTTP server using the built-in `http` module.
-- Handling incoming requests and send back different HTML responses.
+- Handling incoming requests and sending back different HTML responses.
 - Learning how routing works at a low level.
 - Understanding how Node.js interacts with the browser.
 
-#### B. Understanding Express.js. This includes:
+#### B. Understanding Express.js and the MVC architecture. This includes:
 
 - Creating an express app using the `express` module.
-- Handling incoming requests and send back static and dynamic HTML responses with `EJS` view engine.
-- Understand how Express.js simplifies and enhances Node.js web server creation and request handling.
+- Handling incoming requests and sending back static and dynamic HTML responses with `EJS` view engine.
+- Understanding how Express.js simplifies and enhances Node.js web server creation and request handling.
+- Learning Express Router and how it is used.
+- Understanding how to implement MVC in an express app.
 
 <br/>
 
@@ -40,9 +42,15 @@ project-folder/
 │ ├── files.js # Utility functions for working with files using the `fs` module
 ├── views/
 │ ├── dynamic/
+│ │ ├── blogs/
+│ │ │ ├── blog.ejs
+│ │ └──── create.ejs
+│ │ ├── partials/
+│ │ │ ├── footer.ejs
+│ │ │ ├── head.ejs
+│ │ └──── nav.ejs
 │ │ ├── 404.ejs
 │ │ ├── about.ejs
-│ │ ├── create.ejs
 │ └──── index.ejs
 │ ├── static/
 │ │ ├── 404.html
@@ -83,7 +91,17 @@ node -v
 cd project-folder
 ```
 
-**4.** Run the server
+**4.** Install dependencies
+
+```
+npm i
+```
+
+**5.** Create a MongoDB database. Follow this step-by-step tutorial: [https://youtu.be/pILdgCr4w3s?si=hObLuox0pPI26-1P](https://youtu.be/pILdgCr4w3s?si=hObLuox0pPI26-1P)
+
+**6.** Create an `.env` file on the root directory of the project and paste your connection string in `DB_URI` variable.
+
+**7.** Run the server
 
 1.  To run the pure Node.js web server, enter the following command:
 
