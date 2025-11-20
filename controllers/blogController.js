@@ -34,7 +34,7 @@ function blog_details(req, res) {
 
     Blog.findById(id)
         .then(result => res.render('blogs/blog', { title: result.title, blog: result }))
-        .catch(err => res.status(500).send());
+        .catch(err => res.status(404).render('404', { title: "Not Found" }));
 }
 
 function blog_delete(req, res) {
@@ -42,7 +42,7 @@ function blog_delete(req, res) {
 
     Blog.findByIdAndDelete(id)
         .then((result) => res.json({ redirect: '/blogs' }))
-        .catch(err => res.status(500).send());
+        .catch(err => res.status(404).render('404', { title: "Not Found" }));
 }
 
 module.exports = {
