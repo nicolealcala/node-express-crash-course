@@ -12,7 +12,7 @@
             <% if(blogs.length> 0) {%>
             <% blogs.forEach(blog=> { %>
             <li class="flex gap-x-4 hover:text-amber-400 transition-all duration-200 ease-in-out">
-                <div class="min-h-full w-1 bg-amber-400"></div>
+                <div class="min-h-full w-2 bg-amber-400"></div>
                 <a href="/blogs/<%= blog._id %>">
                     <h3 class="text-xl font-medium mb-1">
                         <%=blog.title %>
