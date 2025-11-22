@@ -71,6 +71,7 @@ project-folder/
 - [Express.js](https://expressjs.com)
 - [EJS](https://ejs.co/)
 - [JavaScript](https://developer.mozilla.org/en-US/docs/Web/JavaScript)
+- [Tailwind CSS](https://tailwindcss.com/)
 - HTML5
 
 <br/>
